@@ -1,39 +1,35 @@
 
 # Rapport
 
-**Skriv din rapport här!**
-
-_Du kan ta bort all text som finns sedan tidigare_.
-
-## Följande grundsyn gäller dugga-svar:
-
-- Ett kortfattat svar är att föredra. Svar som är längre än en sida text (skärmdumpar och programkod exkluderat) är onödigt långt.
-- Svaret skall ha minst en snutt programkod.
-- Svaret skall inkludera en kort övergripande förklarande text som redogör för vad respektive snutt programkod gör eller som svarar på annan teorifråga.
-- Svaret skall ha minst en skärmdump. Skärmdumpar skall illustrera exekvering av relevant programkod. Eventuell text i skärmdumpar måste vara läsbar.
-- I de fall detta efterfrågas, dela upp delar av ditt svar i för- och nackdelar. Dina för- respektive nackdelar skall vara i form av punktlistor med kortare stycken (3-4 meningar).
-
-Programkod ska se ut som exemplet nedan. Koden måste vara korrekt indenterad då den blir lättare att läsa vilket gör det lättare att hitta syntaktiska fel.
+Det har skapats en lista av mountains med hjälp av internet tjänster samt egen skapade array lista(ArrayList<Mountain>. Tittar vi på kod snutten nedan, ser man att tre sycken Mountain object skapas och lagras inuti items listan(items.add(new Mountain("Matterhorn"));):. Dessutom så användes en JSON file som ansvarar för att läsa JSON datan i backgrunden och sedan hanteras datan i onPostexecute() metoden vilket sedan ser till att texten/ datan visas på skärmen.
 
 ```
-function errorCallback(error) {
-    switch(error.code) {
-        case error.PERMISSION_DENIED:
-            // Geolocation API stöds inte, gör något
-            break;
-        case error.POSITION_UNAVAILABLE:
-            // Misslyckat positionsanrop, gör något
-            break;
-        case error.UNKNOWN_ERROR:
-            // Okänt fel, gör något
-            break;
+//Items added
+....
+  items.add(new Mountain("Matterhorn"));
+        items.add(new Mountain("Mont Blanc"));
+        items.add(new Mountain("Denali"));
+        ....
+//Jason file
+...
+new JsonFile(this, this).execute(JSON_FILE)
+...
+public void onPostExecute(String json) {
+        Log.d("MainActivity", "" + json);
+
+        Type type = new TypeToken<List<Mountain>>() {}.getType();
+        items = gson.fromJson(json, type);
+        for(int i=0;i <items.size(); i++) {
+            Log.d("Kyckling2", items.get(i).toString());
+            recyclerViewItems.add(new RecyclerViewItem(items.get(i).toString()));
+        }
+        //adapter.notifyDataSetChanged();
     }
-}
 ```
 
 Bilder läggs i samma mapp som markdown-filen.
 
-![](android.png)
+![img.png](img.png)
 
 Läs gärna:
 
