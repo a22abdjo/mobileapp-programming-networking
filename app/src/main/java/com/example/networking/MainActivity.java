@@ -20,7 +20,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements JsonTask.JsonTaskListener {
 
 
-    private final String JSON_URL = "HTTPS_URL_TO_JSON_DATA_CHANGE_THIS_URL";
+    private final String JSON_URL = "https://mobprog.webug.se/json-api?login=brom";
     private final String JSON_FILE = "mountains.json";
 
     ArrayList<Mountain> items = new ArrayList<>();
@@ -46,6 +46,8 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
             Log.d("Kyckling", items.get(i).toString());
             recyclerViewItems.add(new RecyclerViewItem(items.get(i).toString()));
         }
+        new JsonFile(this, this).execute(JSON_FILE);
+         //new JsonTask(this).execute(JSON_URL);
 
         adapter = new RecyclerViewAdapter(this, recyclerViewItems, new RecyclerViewAdapter.OnClickListener() {
             @Override
@@ -58,21 +60,23 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         view.setLayoutManager(new LinearLayoutManager(this));
         view.setAdapter(adapter);
 
-        new JsonFile(this, this).execute(JSON_FILE);
+
     }
 
 
     @Override
     public void onPostExecute(String json) {
-        Log.d("MainActivity", json);
-        Type type = new TypeToken<List<Mountain>>() {}.getType();
-        List<Mountain> listOfMountains = gson.fromJson(json, type);
+        Log.d("MainActivity", "" + json);
 
+        Type type = new TypeToken<List<Mountain>>() {}.getType();
+        items = gson.fromJson(json, type);
         for(int i=0;i <items.size(); i++) {
             Log.d("Kyckling2", items.get(i).toString());
             recyclerViewItems.add(new RecyclerViewItem(items.get(i).toString()));
         }
+        //adapter.notifyDataSetChanged();
     }
+
 
 }
 
