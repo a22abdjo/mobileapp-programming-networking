@@ -1,4 +1,4 @@
-package com.example.networking;
+package com.example.project;
 
 import android.content.Context;
 import android.view.LayoutInflater;

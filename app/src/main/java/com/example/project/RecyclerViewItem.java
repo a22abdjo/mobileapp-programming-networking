@@ -1,6 +1,4 @@
-package com.example.networking;
-
-import androidx.recyclerview.widget.RecyclerView;
+package com.example.project;
 
 @SuppressWarnings("WeakerAccess")
 public class RecyclerViewItem {

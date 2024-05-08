@@ -1,4 +1,4 @@
-package com.example.networking;
+package com.example.project;
 
 import android.app.Activity;
 import android.util.Log;

@@ -1,4 +1,4 @@
-package com.example.networking;
+package com.example.project;
 
 public class Mountain {
     private String name;

@@ -1,4 +1,4 @@
-package com.example.networking;
+package com.example.project;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -13,7 +13,6 @@ import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @SuppressWarnings("FieldCanBeLocal")
@@ -37,9 +36,6 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         setContentView(R.layout.activity_main);
         gson = new Gson();
 
-        items.add(new Mountain("Matterhorn"));
-        items.add(new Mountain("Mont Blanc"));
-        items.add(new Mountain("Denali"));
 
 
         for(int i=0;i <items.size(); i++) {
