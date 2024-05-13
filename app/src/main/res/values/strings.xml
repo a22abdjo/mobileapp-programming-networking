@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">Networking</string>
+    <string name="app_name">Project</string>
+    <string name="app_intenal">Internal</string>
+    <string name="app_external">External</string>
 </resources>
